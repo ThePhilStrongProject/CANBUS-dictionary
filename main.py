@@ -17,7 +17,7 @@ candata6 = []
 candata7 = []
 
 def main():
-    print("Phil's CAN dictionary")
+    print("Phil's CAN dictionary tool")
     print("Version ", version, "\n")
 
     get_mode()
@@ -29,9 +29,11 @@ def main():
         elif mode == "debug":
             d = input(">")
         parse_message(d)
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\Time\tID\tDLC\tData[0]\tData[1]\tData[2]"
+              "\tData[3]\tData[4]\tData[5]\tData[6]\tData[7]")
         for n in range(0,len(canid)):
-            print(cantime[n], " ", canid[n], " ", candlc[n], " ", candata0[n], " ", candata1[n], " ", candata2[n], " ",
-                  candata3[n], " ", candata4[n], " ", candata5[n], " ", candata6[n], " ", candata7[n])
+            print(cantime[n], "\t", canid[n], "\t", candlc[n], "\t", candata0[n], "\t", candata1[n], "\t", candata2[n],
+                  "\t", candata3[n], "\t", candata4[n], "\t", candata5[n], "\t", candata6[n], "\t", candata7[n])
 
 
 def serial_read():
