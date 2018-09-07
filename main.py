@@ -4,7 +4,17 @@ import re
 version = "0.0.1"
 ser = serial
 mode = "debug"
-
+cantime = []
+canid = []
+candlc = []
+candata0 = []
+candata1 = []
+candata2 = []
+candata3 = []
+candata4 = []
+candata5 = []
+candata6 = []
+candata7 = []
 
 def main():
     print("Phil's CAN dictionary")
@@ -19,6 +29,9 @@ def main():
         elif mode == "debug":
             d = input(">")
         parse_message(d)
+        for n in range(0,len(canid)):
+            print(cantime[n], " ", canid[n], " ", candlc[n], " ", candata0[n], " ", candata1[n], " ", candata2[n], " ",
+                  candata3[n], " ", candata4[n], " ", candata5[n], " ", candata6[n], " ", candata7[n])
 
 
 def serial_read():
@@ -33,7 +46,33 @@ def parse_message(s):
     elif s.startswith("help"):
         print("exit, mode, help, can")
     elif s.startswith("can"):
-        print("todo")
+        canread = s.split(';')
+        if canread[1] in canid:
+            pos = canid.index(canread[1])
+            cantime[pos] = canread[2]
+            candlc[pos] = canread[3]
+            candata0[pos] = canread[4]
+            candata1[pos] = canread[5]
+            candata2[pos] = canread[6]
+            candata3[pos] = canread[7]
+            candata4[pos] = canread[8]
+            candata5[pos] = canread[9]
+            candata6[pos] = canread[10]
+            candata7[pos] = canread[11]
+        else:
+            canid.append(canread[1])
+            cantime.append(canread[2])
+            candlc.append(canread[3])
+            candata0.append(canread[4])
+            candata1.append(canread[5])
+            candata2.append(canread[6])
+            candata3.append(canread[7])
+            candata4.append(canread[8])
+            candata5.append(canread[9])
+            candata6.append(canread[10])
+            candata7.append(canread[11])
+    else:
+        print("Not a valid command")
 
 
 def error_handler(text="Error text not provided"):
